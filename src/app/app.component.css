@@ -1,0 +1,15 @@
+.section-title {
+    text-decoration: underline;
+}
+
+img {
+    max-width: 800px;
+}
+
+.section {
+    padding: 8px;
+}
+
+#upload-section {
+    background: #ddd;
+}
