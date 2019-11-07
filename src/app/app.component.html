@@ -1,74 +1,38 @@
 <div class="section">
-    <span class="section-title">Lowes Link File</span>
+    <div class="body">
+        <div class="title">Lowes Link (Sheet 1) and Daily Routes (Sheet 2) - Excel File</div>
 
-    <br>
-    <br>
+        <div id="lowes-link-daily-routes-file" class="drop">Drop File Here</div>
 
-    <input [(ngModel)]="this.lowesLinkFile" (ngModelChange)="this.lowesLinkFileChange()" id="lowes-link-file" type="file" />
+        <div *ngIf="this.lowesLinkDailyRoutesFileName" class="drop-name">{{ this.lowesLinkDailyRoutesFileName }}</div>
 
-    <br>
-    <br>
+        <div class="template-btn-container">
+            <button (click)="this.showLowesLinkTemplate('lowesLink')" color="primary" mat-button>Lowes Link (Sheet 1) Template</button>
+            <button (click)="this.showLowesLinkTemplate('dailyRoutes')" color="primary" mat-button>Daily Routes (Sheet 2) Template</button>
+        </div>
+    </div>
+</div>
 
-    <div>[ No Headers ]</div>
-    <img src="../shortages/assets/lowes-link.png" />
+<div class="section">
+    <div class="body">
+        <div class="title">Plant Partner Delivery Route Schedule By Vehicle - XML File</div>
 
-    <br>
-    <br>
+        <div id="plant-partner-file" class="drop">Drop File Here</div>
+
+        <div *ngIf="this.plantPartnerFileName" class="drop-name">{{ this.plantPartnerFileName }}</div>
+    </div>
 </div>
 
 <hr />
 
 <div class="section">
-    <br>
+    <div class="body">
+        <div class="title">Generate Plant Partner File for Upload - Excel File</div>
 
-    <span class="section-title">Plant Partner Delivery Route Schedule By Vehicle File (XML)</span>
+        <div id="plant-partner-upload-file" class="drop">Drop File Here</div>
 
-    <br>
-    <br>
-
-    <input [(ngModel)]="this.plantPartnerFile" (ngModelChange)="this.plantPartnerFileChange()" id="route-schedule-file" type="file" />
-
-    <br>
-    <br>
-</div>
-
-<hr />
-
-<div class="section">
-    <br>
-
-    <span class="section-title">Daily Routes File</span>
-
-    <br>
-    <br>
-
-    <input [(ngModel)]="this.dailyRoutesFile" (ngModelChange)="this.dailyRoutesChange()" id="daily-routes-file" type="file" />
-
-    <br>
-    <br>
-
-    <div>[ No Headers ]</div>
-    <img src="../shortages/assets/daily-routes.png" />
-
-    <br>
-    <br>
-</div>
-
-<hr />
-
-<div id="upload-section" class="section">
-    <br>
-
-    <span class="section-title">Generate Plant Partner File for Upload</span>
-
-    <br>
-    <br>
-
-    <input [(ngModel)]="this.plantPartnerFileUpload" (ngModelChange)="this.plantPartnerFileUploadChange()" id="plant-partner-file-upload" type="file" />
-
-    <br>
-    <br>
-
-    <div>[ With Headers ]</div>
-    <img src="../shortages/assets/plant-partner-upload.png" />
+        <div class="template-btn-container">
+            <button (click)="this.showLowesLinkTemplate('plantPartner')" color="primary" mat-button>Plant Partner Upload Template</button>
+        </div>
+    </div>
 </div>
