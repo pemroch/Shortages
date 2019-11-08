@@ -88,7 +88,10 @@ export class AppComponent implements OnInit {
                         raw: false,
                     }
                 )
-                .map((route: any) => Object.assign({}, route, { vehicleCode: route.vehicleCode ? Number(route.vehicleCode) : '' }))
+                .map((route: any) => Object.assign({}, route, {
+                    vehicleCode: route.vehicleCode ? Number(route.vehicleCode) : '',
+                    shipWeek: route.shipWeek ? new Date(route.shipWeek).toLocaleDateString() : ''
+                }))
             );
 
             if (this.plantPartnerData.length) {
@@ -132,11 +135,10 @@ export class AppComponent implements OnInit {
                                     const shipDateForWeek = new Date(secitonTextNodes[j].textContent.trim());
                                     const day = shipDateForWeek.getDay();
                                     const diff = shipDateForWeek.getDate() - day + (day == 0 ? -6 : 1);
-                                    const shipWeek = new Date(shipDateForWeek.setDate(diff)).toLocaleDateString();
-                                    store.shipWeek = `${shipWeek.slice(0, -4)}${shipWeek.slice(-2)}`;
+                                    store.shipWeek = new Date(shipDateForWeek.setDate(diff)).toLocaleDateString();
 
                                     const shipDateForDate = new Date(secitonTextNodes[j].textContent.trim());
-                                    store.shipDate = `${shipDateForDate.toLocaleDateString().slice(0, -4)}${shipDateForDate.toLocaleDateString().slice(-2)}`;
+                                    store.shipDate = shipDateForDate.toLocaleDateString();
                                 }
                             } else if (secitonTextNodes[j].attributes[0].nodeValue === 'rpt_vehicle_load_sheet.purchase_order_number') {
                                 store.poNumber = (secitonTextNodes[j].textContent || '').trim();
@@ -269,7 +271,7 @@ export class AppComponent implements OnInit {
                 'Import Qty'
             ]);
 
-            const ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet(rows);
+            const ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet(rows, { cellDates: true });
             const writeWb: XLSX.WorkBook = XLSX.utils.book_new();
 
             XLSX.utils.book_append_sheet(writeWb, ws, 'Sheet1');
